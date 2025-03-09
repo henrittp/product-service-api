@@ -1,0 +1,1 @@
+// TODO: Fazer lógica do Middleware para validar token antes de permitir acesso às rotas protegidas.
