@@ -1,1 +1,8 @@
-// TODO: Fazer lógica do Middleware para validar token antes de permitir acesso às rotas protegidas.
+// middleware/auth.js
+export default async function auth(request, reply) {
+    try {
+      await request.jwtVerify();
+    } catch (err) {
+      reply.code(401).send({ error: 'Unauthorized' });
+    }
+  }

@@ -1,4 +1,5 @@
 import Fastify from 'fastify'
+import fastifyCors from '@fastify/cors';
 import fastifyJwt from 'fastify-jwt'
 import fastifyPostgres from 'fastify-postgres'
 import dotenv from 'dotenv'
@@ -8,6 +9,10 @@ import productRoutes from './src/routes/productRoutes.js'
 dotenv.config()
 
 const fastify = Fastify({ logger: true })
+
+fastify.register(fastifyCors, {
+  origin: '*', // ou 'http://localhost:3001'
+});
 
 // Registrar plugin do PostgreSQL
 fastify.register(fastifyPostgres, {
